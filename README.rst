@@ -14,6 +14,6 @@ Usage
     [TBI]
     $ mcinfo pig
     [TBI]
-    $ mcinfo 
+    $ mcinfo
 
-That's kind of it. You can also use numeric IDs.
+That's kind of it.
