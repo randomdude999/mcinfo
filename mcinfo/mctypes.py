@@ -65,7 +65,8 @@ class CraftingTableRecipe(object):
                 if y in data["recipe_components"] or y == " ":
                     self.recipe[-1].append(y)
                 else:
-                    raise ValueError("Letter " + repr(y) + " used in recipe, but undefined in recipe_components")
+                    raise ValueError("Letter " + repr(y) + " used in recipe, "
+                    "but undefined in recipe_components")
         self.recipe_components = data["recipe_components"]
 
     def str(self):
@@ -108,30 +109,22 @@ class Recipe(object):
             out += x['recipe'].str() + "\n"
         return out
 
-class BaseItem(object):
-    def __init__(self, mc_id, mc_name, english_name, desc, recipe, stack, nbt_data):
-        self.mc_id = mc_id
-        self.mc_name = mc_name
-        self.english_name = english_name
-        self.description = desc
-        self.recipe = recipe
-        self.stack_size = stack
-        self.nbt_data = nbt_data
 
-class Item(BaseItem):
-    pass
+# I AM BEING SO SMART WITH THIS
 
-class Tool(Item):
-    pass
+class Representable(object):
+    allowed_keys = set()
+    def __init__(self, data):
+        filtered_dict = {k: data[k] for k in allowed_keys if k in data}
+        self.__dict__.update(filtered_dict)
 
-class Block(BaseItem):
-    pass
-
-class Mob(object):
-    pass
-
-class PotionEffect(object):
-    pass
-
-class Enchantment(object):
-    pass
+class Item(Representable):
+    allowed_keys = {
+            'mc_id': str,
+            'mc_name': str,
+            'english_name': str,
+            'desc': str,
+            'recipe': Recipe,
+            'stack_size': int,
+            'nbt_data': NBTTemplate,
+    }
