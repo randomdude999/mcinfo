@@ -1,39 +1,44 @@
 #!/usr/bin/env python3
 
 nbt_all_types = ['TAG_Byte', 'TAG_Short', 'TAG_Int', 'TAG_Long', 'TAG_Float',
-        'TAG_Double', 'TAG_String', 'TAG_Byte_Array', 'TAG_List',
-        'TAG_Int_Array', 'TAG_Compound']
+                 'TAG_Double', 'TAG_String', 'TAG_Byte_Array', 'TAG_List',
+                 'TAG_Int_Array', 'TAG_Compound']
 
-def prettyFormatNBT(nbt_data):
-    shortNames = {
-            'TAG_Byte': 'B',
-            'TAG_Short': 'S',
-            'TAG_Int': 'I',
-            'TAG_Long': 'L',
-            'TAG_Float': 'F',
-            'TAG_Double': 'D',
-            'TAG_Byte_Array': '[B]', # Array around byte symbol
-            'TAG_String': 'txt',
-            'TAG_List': '[ ]', # Array
-            'TAG_Compound': '{ }', # Dict, object, whatever
-            'TAG_Int_Array': '[I]' # Array around int symbol
+
+def pretty_format_nbt(nbt_data):
+    short_names = {
+        'TAG_Byte': 'B',
+        'TAG_Short': 'S',
+        'TAG_Int': 'I',
+        'TAG_Long': 'L',
+        'TAG_Float': 'F',
+        'TAG_Double': 'D',
+        'TAG_Byte_Array': '[B]',  # Array around byte symbol
+        'TAG_String': 'txt',
+        'TAG_List': '[ ]',  # Array
+        'TAG_Compound': '{ }',  # Dict, object, whatever
+        'TAG_Int_Array': '[I]'  # Array around int symbol
     }
     if nbt_data.type == "TAG_Compound":
-        identLevel = 4
+        indent_level = 4
         out = ""
         for x in nbt_data.data:
-            out += x + ": " + prettyFormatNBT(nbt_data.data[x])
-        out = " " * identLevel + out.replace("\n", "\n" + (identLevel * " ") )
-        return shortNames[nbt_data.type] + "  " + nbt_data.description + "\n" + out
+            out += x + ": " + pretty_format_nbt(nbt_data.data[x])
+        out = " " * indent_level + out.replace("\n",
+                                               "\n" + (indent_level * " "))
+        return short_names[
+                   nbt_data.type] + "  " + nbt_data.description + "\n" + out
     elif nbt_data.type == "TAG_List":
-        identLevel = 4
+        indent_level = 4
         out = ""
         for x in nbt_data.data:
-            out += prettyFormatNBT(x)
-        out = " " * identLevel + out.replace("\n", "\n" + (identLevel * " ") )
-        return shortNames[nbt_data.type] + "  " + nbt_data.description + "\n" + out
+            out += pretty_format_nbt(x)
+        out = " " * indent_level + out.replace("\n",
+                                               "\n" + (indent_level * " "))
+        return short_names[
+                   nbt_data.type] + "  " + nbt_data.description + "\n" + out
     else:
-        return shortNames[nbt_data.type] + "  " + nbt_data.description
+        return short_names[nbt_data.type] + "  " + nbt_data.description
 
 
 class NBTTemplate(object):
@@ -52,8 +57,9 @@ class NBTTemplate(object):
         else:
             raise TypeError("Invalid data type")
 
-    def prettyPrint(self):
-        print prettyFormatNBT(self)
+    def pretty_print(self):
+        print(pretty_format_nbt(self))
+
 
 class CraftingTableRecipe(object):
     def __init__(self, data):
@@ -66,11 +72,12 @@ class CraftingTableRecipe(object):
                     self.recipe[-1].append(y)
                 else:
                     raise ValueError("Letter " + repr(y) + " used in recipe, "
-                    "but undefined in recipe_components")
+                                     "but undefined in recipe_components")
         self.recipe_components = data["recipe_components"]
 
     def str(self):
         pass
+
 
 class SmeltingRecipe(object):
     def __init__(self, data):
@@ -79,6 +86,7 @@ class SmeltingRecipe(object):
     def str(self):
         return "Smelt " + self.inp
 
+
 class BrewingRecipe(object):
     def __init__(self, data):
         self.base = data[0]
@@ -86,6 +94,7 @@ class BrewingRecipe(object):
 
     def str(self):
         return "Brew " + self.modifier + " into " + self.base
+
 
 class Recipe(object):
     def __init__(self, methods, *args):
@@ -100,7 +109,7 @@ class Recipe(object):
             else:
                 raise ValueError("Invalid crafting method: should be one of "
                                  "[crafting, smelting, brewing]")
-            self.methods.append({'method':s, 'recipe':recipe_type(args[i])})
+            self.methods.append({'method': s, 'recipe': recipe_type(args[i])})
 
     def str(self):
         out = "Recipes:\n"
@@ -110,21 +119,22 @@ class Recipe(object):
         return out
 
 
-# I AM BEING SO SMART WITH THIS
-
 class Representable(object):
-    allowed_keys = set()
+    allowed_keys = dict()
+
     def __init__(self, data):
-        filtered_dict = {k: data[k] for k in allowed_keys if k in data}
+        filtered_dict = {k: self.allowed_keys[k](v) for k, v in data.items()
+                         if k in self.allowed_keys}
         self.__dict__.update(filtered_dict)
+
 
 class Item(Representable):
     allowed_keys = {
-            'mc_id': str,
-            'mc_name': str,
-            'english_name': str,
-            'desc': str,
-            'recipe': Recipe,
-            'stack_size': int,
-            'nbt_data': NBTTemplate,
+        'mc_id': str,
+        'mc_name': str,
+        'english_name': str,
+        'desc': str,
+        'recipe': Recipe,
+        'stack_size': int,
+        'nbt_data': NBTTemplate,
     }
