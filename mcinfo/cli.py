@@ -13,7 +13,7 @@ def handle_req(req):
     if req.startswith('nbt:'):
         return mcinfo.nbt.handle_nbt_request(req.replace('nbt:', '', 1))
     else:
-        pass  # TODO normal handling here
+        return
 
 
 def input_loop():
