@@ -23,29 +23,24 @@ short_names = {
 wrapper = textwrap.TextWrapper
 
 
-def pretty_format_nbt(nbt_data):
-    if nbt_data.type == "TAG_Compound":
-        indent_level = 4
+def pretty_format_nbt(nbt):
+    indent = " " * 4
+    if nbt.type == "TAG_Compound":
         out = ""
-        for x in nbt_data.includes:
-            out += "[All tags from " + x + "]\n"
-        for x in nbt_data.data:
-            out += x + ": " + pretty_format_nbt(nbt_data.data[x]) + "\n"
-        out = " " * indent_level + out.replace("\n",
-                                               "\n" + (indent_level * " "))
-        return short_names[nbt_data.type] + "  " + nbt_data.description + \
-            "\n" + out.rstrip()
-    elif nbt_data.type == "TAG_List":
-        indent_level = 4
+        for x in nbt.includes:
+            out += "[All tags from {}]\n".format(x)
+        for x in nbt.data:
+            out += "{}: {}\n".format(x, pretty_format_nbt(nbt.data[x]))
+        out = indent + out.rstrip().replace("\n", "\n" + indent)
+        return "{}  {}\n{}".format(short_names[nbt.type], nbt.desc, out)
+    elif nbt.type == "TAG_List":
         out = ""
-        for x in nbt_data.data:
-            out += pretty_format_nbt(x)
-        out = " " * indent_level + out.replace("\n",
-                                               "\n" + (indent_level * " "))
-        return short_names[nbt_data.type] + "  " + nbt_data.description + \
-            "\n" + out
+        for x in nbt.data:
+            out += "{}\n".format(pretty_format_nbt(x))
+        out = indent + out.rstrip().replace("\n", "\n" + indent)
+        return "{}  {}\n{}".format(short_names[nbt.type], nbt.desc, out)
     else:
-        return short_names[nbt_data.type] + "  " + nbt_data.description
+        return "{}  {}".format(short_names[nbt.type], nbt.desc)
 
 
 class NBTTemplate(object):
@@ -61,7 +56,7 @@ class NBTTemplate(object):
                 for k in data['content']:
                     self.data[k] = NBTTemplate(data['content'][k])
             self.type = data['type']
-            self.description = data['desc']
+            self.desc = data['desc']
         else:
             raise TypeError("Invalid data type")
 
