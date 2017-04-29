@@ -1,3 +1,13 @@
-{
-
-}
+[
+  {
+    "type": "crafting",
+    "is_shaped": true,
+    "item_map": {"n": "Gold Nugget"},
+    "grid":
+    [
+      ["n", "n", "n"],
+      ["n", "n", "n"],
+      ["n", "n", "n"]
+    ]
+  }
+]

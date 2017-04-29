@@ -26,5 +26,6 @@ def handle_request(request):
         stream = pkg_resources.resource_stream(__name__, "data/recipes/%s.json"
                                                % request)
         data = json.load(stream)
-        out += str(mcinfo.recipes.RecipeCollection(data))
+        out += "\nRecipes:\n"
+        out += str(mcinfo.recipes.RecipeCollection(data)).rstrip()
     return out

@@ -18,21 +18,21 @@ class BrewingRecipe:
 
 class TradingRecipe:
     def __init__(self, data):
-        self.price_min = data['price_min']
-        self.price_max = data['price_max']
+        self.price_min = data["price_min"]
+        self.price_max = data["price_max"]
         self.single_price = (self.price_min == 1 and self.price_max == 1)
         try:
-            self.secondary_item = data['secondary_item']
-            self.secondary_count = data['secondary_count']
+            self.secondary_item = data["secondary_item"]
+            self.secondary_count = data["secondary_count"]
             self.has_secondary_item = True
         except AttributeError:
             self.secondary_item = None
             self.secondary_count = 0
             self.has_secondary_item = False
-        self.out_count_min = data['out_count_min']
-        self.out_count_max = data['out_count_max']
+        self.out_count_min = data["out_count_min"]
+        self.out_count_max = data["out_count_max"]
         self.single_out = (self.out_count_min == 1 and self.out_count_max == 1)
-        self.career = data['career']
+        self.career = data["career"]
 
     def __str__(self):
         out = "Can be bought from {} for ".format(self.career.capitalize())
@@ -92,23 +92,33 @@ class MobDropRecipe:
 
 class CratingRecipe:
     def __init__(self, data):
-        self.item_map = data['item_map']
-        self.grid = data['grid']
-        self.grid_size = len(self.grid)
+        if data["is_shaped"]:
+            self.item_map = data["item_map"]
+            self.grid = data["grid"]
+            self.grid_size = len(self.grid)
+        else:
+            self.items = data["items"]
+        self.is_shaped = data["is_shaped"]
 
     def pretty_print_crafting(self):
         out = ("+---" * self.grid_size) + "+\n"
         for line in self.grid:
             out += "|"
             for col in line:
-                out += " {} |".format(" " if col.isempty() else col)
-            out += ("+---" * self.grid_size) + "+\n"
+                out += " {} |".format(" " if col == "" else col)
+            out += "\n" + ("+---" * self.grid_size) + "+\n"
         return out
 
     def __str__(self):
-        out = self.pretty_print_crafting()
-        for k, v in self.item_map.items():
-            out += "{}: {}\n".format(k, v)
+        if self.is_shaped:
+            out = self.pretty_print_crafting()
+            for k, v in self.item_map.items():
+                out += "{}: {}\n".format(k, v)
+        else:
+            out = "Shapeless"
+            for x in self.items:
+                out += "\n* " + x
+        return out
 
 type_map = {
     "smelting": SmeltingRecipe,
