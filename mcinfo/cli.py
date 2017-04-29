@@ -1,5 +1,6 @@
 from __future__ import print_function
 import sys
+import mcinfo.data
 import mcinfo.nbt
 
 try:
@@ -13,7 +14,7 @@ def handle_req(req):
     if req.startswith('nbt:'):
         return mcinfo.nbt.handle_nbt_request(req.replace('nbt:', '', 1))
     else:
-        return
+        return mcinfo.normal_info.handle_request(req)
 
 
 def input_loop():
