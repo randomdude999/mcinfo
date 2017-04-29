@@ -15,5 +15,10 @@ Usage
     $ mcinfo pig
     [TBI]
     $ mcinfo
+    > nbt:cow
+    [TBI]
+    > wooden_sword
+    [TBI]
+    > quit
 
 That's kind of it.

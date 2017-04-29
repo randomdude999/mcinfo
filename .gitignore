@@ -27,5 +27,6 @@ var/
 docs/_build/
 
 # virtualenv
+mcinfo_venv/
 venv/
 ENV/

@@ -8,7 +8,8 @@ def readme():
 setup(
     name='mcinfo',
     version='0.1',
-    description="Command-line tool to show information about Minecraft blocks and items.",
+    description="Command-line tool to show information about Minecraft blocks "
+                "and items.",
     long_description=readme(),
     classifiers=[
         'Development Status :: 3 - Alpha',
@@ -23,6 +24,7 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Games/Entertainment'
     ],
     keywords='minecraft',
@@ -32,6 +34,12 @@ setup(
     entry_points={
         'console_scripts': [
             'mcinfo = mcinfo.cli:main'
+        ]
+    },
+    package_data={
+        'mcinfo': [
+            'data/nbt/*.json',
+            'data/*.json'
         ]
     }
 )

@@ -1,0 +1,10 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "content": {},
+  "includes": [
+    "entity",
+    "mob",
+    "breedable"
+  ]
+}
