@@ -89,12 +89,34 @@ class MobDropRecipe:
         if self.extra_conditions:
             out += self.extra_conditions
 
+
+class CratingRecipe:
+    def __init__(self, data):
+        self.item_map = data['item_map']
+        self.grid = data['grid']
+        self.grid_size = len(self.grid)
+
+    def pretty_print_crafting(self):
+        out = ("+---" * self.grid_size) + "+\n"
+        for line in self.grid:
+            out += "|"
+            for col in line:
+                out += " {} |".format(" " if col.isempty() else col)
+            out += ("+---" * self.grid_size) + "+\n"
+        return out
+
+    def __str__(self):
+        out = self.pretty_print_crafting()
+        for k, v in self.item_map.items():
+            out += "{}: {}\n".format(k, v)
+
 type_map = {
     "smelting": SmeltingRecipe,
     "brewing": BrewingRecipe,
     "trading": TradingRecipe,
     "chest_loot": ChestLootRecipe,
-    "mob_loot": MobDropRecipe
+    "mob_loot": MobDropRecipe,
+    "crafting": CratingRecipe
 }
 
 
