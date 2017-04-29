@@ -16,7 +16,10 @@ Usage
     [TBI]
     $ mcinfo
     > nbt:cow
-    [TBI]
+    { }  Entity data
+    [All tags from entity]
+    [All tags from mob]
+    [All tags from breedable]
     > wooden_sword
     [TBI]
     > quit
