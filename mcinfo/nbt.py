@@ -88,8 +88,7 @@ class NBTTemplate(object):
 def handle_nbt_request(request):
     if pkg_resources.resource_exists(__name__, "data/nbt/%s.json" %
                                      request):
-        stream = pkg_resources.resource_stream(__name__, "data/nbt/%s.json" %
-                                               request)
-        data = json.load(stream)
-        stream.close()
+        data_str = pkg_resources.resource_string(__name__, "data/nbt/%s.json" %
+                                                 request)
+        data = json.loads(data_str)
         return pretty_format_nbt(NBTTemplate(data))
