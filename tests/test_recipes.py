@@ -89,8 +89,7 @@ class TestRecipes(unittest.TestCase):
         self.assertEqual(str(recipes.CraftingRecipe(data)), expected_out)
 
     def test_recipe(self):
-        with self.assertRaises(ValueError):
-            recipes.Recipe({'type': "nothing"})
+        self.assertRaises(ValueError, recipes.Recipe, {'type': "nothing"})
         recipe = recipes.Recipe({'type': 'smelting', 'input': 'test1'})
         self.assertEqual(recipe.method, 'smelting')
         self.assertEqual(str(recipe), "Smelt test1")

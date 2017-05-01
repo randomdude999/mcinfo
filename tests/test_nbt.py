@@ -41,12 +41,10 @@ class TestNBT(unittest.TestCase):
         self.assertEqual(nbt.pretty_format_nbt(nbt_a), expectedFormatting)
 
     def test_invalid_types(self):
-        with self.assertRaises(TypeError):
-            nbt.NBTTemplate({'type': "invalid", 'desc': "something"})
-        with self.assertRaises(ValueError):
-            nbt.NBTTemplate({})  # No type or anything
-        with self.assertRaises(ValueError):
-            nbt.NBTTemplate({'type': "TAG_List"})  # No content
+        self.assertRaises(TypeError, nbt.NBTTemplate, {'type': "invalid",
+                                                       'desc': "something"})
+        self.assertRaises(ValueError, nbt.NBTTemplate, {})
+        self.assertRaises(ValueError, nbt.NBTTemplate, {'type': "TAG_List"})
 
     def test_no_desc(self):
         a = nbt.NBTTemplate({'type': "TAG_String"})  # No desc!
