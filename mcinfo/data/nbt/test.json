@@ -1,0 +1,23 @@
+{
+  "type": "TAG_Compound",
+    "includes": ["3", "other", "things"],
+    "desc": "example nbt structure",
+    "content": {
+        "a_string": {
+            "type": "TAG_String",
+            "desc": "A string! what did you expect, the spanish inquisition?"
+        },
+        "a_byte": {
+            "type": "TAG_Byte",
+            "desc": "A byte. This one has 256 possible values."
+        },
+        "list": {
+            "type": "TAG_List",
+            "desc": "example list",
+            "content": {
+                "type": "TAG_String",
+                "desc": "the string."
+            }
+        }
+    }
+}

@@ -41,5 +41,6 @@ setup(
             'data/nbt/*.json',
             'data/*.json'
         ]
-    }
+    },
+    test_suite='tests'
 )
