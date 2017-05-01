@@ -15,7 +15,7 @@ class BrewingRecipe:
         self.modifier = data["modifier"]
 
     def __str__(self):
-        return "Brew {} into {}".format(self.modifier, self.base)
+        return "Brew {0} into {1}".format(self.modifier, self.base)
 
 
 class TradingRecipe:
@@ -37,19 +37,19 @@ class TradingRecipe:
         self.career = data["career"]
 
     def __str__(self):
-        out = "Can be bought from {} for ".format(self.career.capitalize())
+        out = "Can be bought from {0} for ".format(self.career.capitalize())
         if self.single_price:
             out += "1 Emerald"
         else:
-            out += "{}-{} Emeralds".format(self.price_min, self.price_max)
+            out += "{0}-{1} Emeralds".format(self.price_min, self.price_max)
         if self.has_secondary_item:
-            out += " and {} {}.".format(self.secondary_count,
-                                        self.secondary_item)
+            out += " and {0} {1}.".format(self.secondary_count,
+                                          self.secondary_item)
         else:
             out += "."
         if not self.single_out:
-            out += " Yields {}-{}.".format(self.out_count_min,
-                                           self.out_count_max)
+            out += " Yields {0}-{1}.".format(self.out_count_min,
+                                             self.out_count_max)
         return out
 
 
@@ -59,7 +59,7 @@ class ChestLootRecipe:
         self.chance = data["chance"]
 
     def __str__(self):
-        return "Can be found from {} with {}% chance.".format(
+        return "Can be found from {0} with {1}% chance.".format(
             self.location, self.chance)
 
 
@@ -81,12 +81,12 @@ class MobDropRecipe:
     def __str__(self):
         if self.drop_type == "common":
             if self.drops_single:
-                out = "{} drops 1 on death".format(self.source)
+                out = "{0} drops 1 on death".format(self.source)
             else:
-                out = "{} drops {}-{} on death".format(
+                out = "{0} drops {1}-{2} on death".format(
                     self.source, self.min_count, self.max_count)
         else:
-            out = "{} has {}% chance to drop on death".format(
+            out = "{0} has {1}% chance to drop on death".format(
                 self.source, self.drop_chance)
         if self.extra_conditions:
             out += ' ' + self.extra_conditions
@@ -109,7 +109,7 @@ class CraftingRecipe:
         for line in self.grid:
             out += "|"
             for col in line:
-                out += " {} |".format(" " if col == "" else col)
+                out += " {0} |".format(" " if col == "" else col)
             out += "\n" + ("+---" * self.grid_size) + "+\n"
         return out
 
@@ -117,7 +117,7 @@ class CraftingRecipe:
         if self.is_shaped:
             out = self.pretty_print_crafting()
             for k, v in self.item_map.items():
-                out += "{}: {}\n".format(k, v)
+                out += "{0}: {1}\n".format(k, v)
         else:
             out = "Shapeless"
             for x in self.items:
@@ -154,5 +154,6 @@ class RecipeCollection:
     def __str__(self):
         out = ""
         for x in self.recipes:
-            out += "{} recipe: \n{}\n".format(x.method.capitalize(), x.recipe)
+            out += "{0} recipe: \n{1}\n".format(x.method.capitalize(),
+                                                x.recipe)
         return out

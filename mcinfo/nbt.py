@@ -29,17 +29,17 @@ def pretty_format_nbt(nbt):
     if nbt.type == "TAG_Compound":
         out = ""
         for x in nbt.includes:
-            out += "[All tags from {}]\n".format(x)
+            out += "[All tags from {0}]\n".format(x)
         for x in nbt.data:
-            out += "{}: {}\n".format(x, pretty_format_nbt(nbt.data[x]))
+            out += "{0}: {1}\n".format(x, pretty_format_nbt(nbt.data[x]))
         out = indent + out.rstrip().replace("\n", "\n" + indent)
-        return "{}  {}\n{}".format(short_names[nbt.type], nbt.desc, out)
+        return "{0}  {1}\n{2}".format(short_names[nbt.type], nbt.desc, out)
     elif nbt.type == "TAG_List":
-        out = "{}\n".format(pretty_format_nbt(nbt.data))
+        out = "{0}\n".format(pretty_format_nbt(nbt.data))
         out = indent + out.rstrip().replace("\n", "\n" + indent)
-        return "{}  {}\n{}".format(short_names[nbt.type], nbt.desc, out)
+        return "{0}  {1}\n{2}".format(short_names[nbt.type], nbt.desc, out)
     else:
-        return "{}  {}".format(short_names[nbt.type], nbt.desc)
+        return "{0}  {1}".format(short_names[nbt.type], nbt.desc)
 
 
 class NBTTemplate(object):
