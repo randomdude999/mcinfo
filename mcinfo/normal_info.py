@@ -19,6 +19,8 @@ def handle_request(request):
                                      request):
         data_str = pkg_resources.resource_string(__name__, "data/%s.json" %
                                                  request)
+        if isinstance(data_str, bytes):
+            data_str = data_str.decode()
         data = json.loads(data_str)
         out = format_data(data)
 
@@ -27,6 +29,8 @@ def handle_request(request):
         data_str = pkg_resources.resource_string(__name__,
                                                  "data/recipes/%s.json" %
                                                  request)
+        if isinstance(data_str, bytes):
+            data_str = data_str.decode()
         data = json.loads(data_str)
         out += "\nRecipes:\n"
         out += str(mcinfo.recipes.RecipeCollection(data)).rstrip()
