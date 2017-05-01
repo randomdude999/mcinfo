@@ -1,0 +1,204 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Data common to all mobs",
+  "content": {
+    "HealF": {
+      "type": "TAG_Float",
+      "desc": "Amount of health entity has. Used for precise calculations."
+    },
+    "Health": {
+      "type": "TAG_Float",
+      "desc": "Amount of health entity has. This is overriden by HealF."
+    },
+    "AbsorptionAmount": {
+      "type": "TAG_Float",
+      "desc": "Amount of extra health added by the Absorption effect."
+    },
+    "HurtTime": {
+      "type": "TAG_Short",
+      "desc": "Number of ticks mob will say red for after being hit. 0 when not recently hit."
+    },
+    "HurtByTimestamp": {
+      "type": "TAG_Int",
+      "desc": "Last time the mob was damaged, in ticks since the mob's creation."
+    },
+    "DeathTime": {
+      "type": "TAG_Short",
+      "desc": "Number of ticks mob has been dead for."
+    },
+    "FallFlying": {
+      "type": "TAG_Byte",
+      "desc": "When set to 1 for non-players, will allow them to glide with an equipped elytra."
+    },
+    "Attributes": {
+      "type": "TAG_List",
+      "desc": "List of attributes for this mob.",
+      "content": {
+        "type": "TAG_Compound",
+        "desc": "An individual attribute.",
+        "content": {
+          "Name": {
+            "type": "TAG_String",
+            "desc": "The name of this attribute."
+          },
+          "Base": {
+            "type": "TAG_Double",
+            "desc": "The base value for this attribute."
+          },
+          "Modifiers": {
+            "type": "TAG_List",
+            "desc": "List of attribute modifiers acting on this attribute.",
+            "content": {
+              "type": "TAG_Compound",
+              "desc": "An individual modifier.",
+              "content": {
+                "Name": {
+                  "type": "TAG_String",
+                  "desc": "The modifier's name."
+                },
+                "Amount": {
+                  "type": "TAG_Double",
+                  "desc": "The amount by which the modifier modifies the attribute."
+                },
+                "Operation": {
+                  "type": "TAG_Int",
+                  "desc": "0, 1, or 2. Defines the operation this Modifier executes on the Attribute's Base value. 0: Increment X by Amount, 1: Increment Y by X * Amount, 2: Y = Y * (1 + Amount) (equivalent to Increment Y by Y * Amount). The game first sets X = Base, then executes all Operation 0 modifiers, then sets Y = X, then executes all Operation 1 modifiers, and finally executes all Operation 2 modifiers."
+                },
+                "UUIDMost": {
+                  "type": "TAG_Long",
+                  "desc": "Most significant bits of this modifier's UUID."
+                },
+                "UUIDLeast": {
+                  "type": "TAG_Long",
+                  "desc": "Least significant bits of this modifier's UUID."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ActiveEffects": {
+      "type": "TAG_List",
+      "desc": "List of potion effects on this mob.",
+      "content": {
+        "type": "TAG_Compound",
+        "desc": "An individual potion effect.",
+        "content": {
+          "Id": {
+            "type": "TAG_Byte",
+            "desc": "The effect ID."
+          },
+          "Amplifier": {
+            "type": "TAG_Byte",
+            "desc": "The potion effect level. 0 is level 1."
+          },
+          "Duration": {
+            "type": "TAG_Int",
+            "desc": "The number of ticks until this potion effect wears off."
+          },
+          "Ambient": {
+            "type": "TAG_Byte",
+            "desc": "If the effect is provided by a beacon and should be less intrusive."
+          },
+          "ShowParticles": {
+            "type": "TAG_Byte",
+            "desc": "Whether to show particles on this effect."
+          }
+        }
+      }
+    },
+    "HandItems": {
+      "type": "TAG_List",
+      "desc": "List of items mob is holding, in order: mainhand, offhand.",
+      "content": {
+        "type": "TAG_Compound",
+        "desc": "The item being held in the mainhand/offhand, without the Slot tag.",
+        "includes": ["item"]
+      }
+    },
+    "ArmorItems": {
+      "type": "TAG_List",
+      "desc": "List of items mob is wearing, in order: feet, legs, chest, head.",
+      "content": {
+        "type": "TAG_Compound",
+        "desc": "The item being worn, without the Slot tag.",
+        "includes": ["item"]
+      }
+    },
+    "HandDropChances": {
+      "type": "TAG_List",
+      "desc": "Chance to drop the item in the mainhand/offhand.",
+      "content": {
+        "type": "TAG_Float",
+        "desc": "The chance."
+      }
+    },
+    "ArmorDropChances": {
+      "type": "TAG_List",
+      "desc": "Chance to drop the items worn, in order feet, legs, chest, head.",
+      "content": {
+        "type": "TAG_Float",
+        "desc": "The chance."
+      }
+    },
+    "DeathLootTable": {
+      "type": "TAG_String",
+      "desc": "Loot table used to generate items the mob drops on death."
+    },
+    "DeathLootTableSeed": {
+      "type": "TAG_Long",
+      "desc": "Seed for generating the loot table. Will use random number if 0 or omitted."
+    },
+    "CanPickUpLoot": {
+      "type": "TAG_Byte",
+      "desc": "If the mob can pick up loot."
+    },
+    "NoAI": {
+      "type": "TAG_Byte",
+      "desc": "If 1, will completely disable the mob's AI."
+    },
+    "PersistenceRequired": {
+      "type": "TAG_Byte",
+      "desc": "If 1, the mob will not naturally despawn."
+    },
+    "LeftHanded": {
+      "type": "TAG_Byte",
+      "desc": "If 1, the mob will render left handed."
+    },
+    "Team": {
+      "type": "TAG_String",
+      "desc": "Not actually part of the NBT but the entity is added to this team on creation."
+    },
+    "Leashed": {
+      "type": "TAG_Byte",
+      "desc": "Whether the mob is leashed"
+    },
+    "Leash": {
+      "type": "TAG_Compound",
+      "desc": "either an UUID if the leash connects to another entity or XYZ coors if it connects to a fence.",
+      "content": {
+        "UUIDMost": {
+          "type": "TAG_Long",
+          "desc": "Most significant bits of the UUID."
+        },
+        "UUIDLeast": {
+          "type": "TAG_Long",
+          "desc": "Least significant its of the UUID."
+        },
+        "X": {
+          "type": "TAG_Int",
+          "desc": "X coordinate of the fence."
+        },
+        "Y": {
+          "type": "TAG_Int",
+          "desc": "Y coordinate of the fence."
+        },
+        "Z": {
+          "type": "TAG_Int",
+          "desc": "Z coordinate of the fence."
+        }
+      }
+    }
+  }
+}

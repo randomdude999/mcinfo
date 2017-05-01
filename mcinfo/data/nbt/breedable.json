@@ -1,0 +1,26 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Data common to all mobs that can breed",
+  "content": {
+    "InLove": {
+      "type": "TAG_Int",
+      "desc": "Number of ticks until the mob stops searching for a mate."
+    },
+    "Age": {
+      "type": "TAG_Int",
+      "desc": "Age of the mob in ticks. Negative when a baby. When above 0, represents number of ticks until the mob can breed again."
+    },
+    "ForcedAge": {
+      "type": "TAG_Int",
+      "desc": " A value of age which will be assigned to this mob when it grows up. Incremented when a baby mob is fed."
+    },
+    "LoveCauseLeast": {
+      "type": "TAG_Long",
+      "desc": "Least significant bits of the entity that caused this animal to breed."
+    },
+    "LoveCauseMost": {
+      "type": "TAG_Long",
+      "desc": "Most significant bits of the entity that caused this animal to breed."
+    }
+  }
+}

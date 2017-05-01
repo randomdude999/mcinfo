@@ -1,0 +1,153 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "content": {
+    "id": {
+      "type": "TAG_String",
+      "desc": "Entity ID. Doesn't exist for players."
+    },
+    "Pos": {
+      "type": "TAG_List",
+      "desc": "3 doubles describing the position of the entity",
+      "content": {
+        "type": "TAG_Double",
+        "desc": "The X, Y or Z position of the entity."
+      }
+    },
+    "Motion": {
+      "type": "TAG_List",
+      "desc": "3 doubles describing the motion of the entity in blocks/tick",
+      "content": {
+        "type": "TAG_Double",
+        "desc": "The X, Y or Z motion of the entity."
+      }
+    },
+    "Rotation": {
+      "type": "TAG_List",
+      "desc": "2 floats describing the rotation of the entity. 1st one, yaw, goes clockwise around the Y axis. 2nd, pitch, is declination from horizon.",
+      "content": {
+        "type": "TAG_Float",
+        "desc": "The float. Yaw is between 0 and 360, pitch between -90 and +90."
+      }
+    },
+    "FallDistance": {
+      "type": "TAG_Float",
+      "desc": "Distance entity has fallen. Used to calculate fall damage."
+    },
+    "Fire": {
+      "type": "TAG_Short",
+      "desc": "Number of ticks until entity stops burning."
+    },
+    "Air": {
+      "type": "TAG_Short",
+      "desc": "How much air the entity has."
+    },
+    "OnGround": {
+      "type": "TAG_Byte",
+      "desc": "If the entity is touching the ground."
+    },
+    "NoGravity": {
+      "type": "TAG_Byte",
+      "desc": "If true, the entity will not fall if in the air."
+    },
+    "Dimension": {
+      "type": "TAG_Int",
+      "desc": "Used in player.dat to store the player's last know dimension."
+    },
+    "Invulnerable": {
+      "type": "TAG_Byte",
+      "desc": "The entity will not take damage if true."
+    },
+    "PortalCooldown": {
+      "type": "TAG_Int",
+      "desc": "Number of ticks until the entity may be teleported through a nether portal again."
+    },
+    "UUIDMost": {
+      "type": "TAG_Long",
+      "desc": "Most significant bits of the entity's UUID."
+    },
+    "UUIDLeast": {
+      "type": "TAG_Long",
+      "desc": "Least significant bits of the entity's UUID."
+    },
+    "CustomName": {
+      "type": "TAG_String",
+      "desc": "Custom name of the entity."
+    },
+    "CustomNameVisible": {
+      "type": "TAG_Byte",
+      "desc": "If true, the custom name of the entity will appear above the entity even if not looking at them."
+    },
+    "Silent": {
+      "type": "TAG_Byte",
+      "desc": "Whether the entity is silent."
+    },
+    "Passengers": {
+      "type": "TAG_List",
+      "desc": "List of entities riding this one.",
+      "content": {
+        "type": "TAG_Compound",
+        "desc": "The data of the entity.",
+        "includes": ["entity"]
+      }
+    },
+    "Glowing": {
+      "type": "TAG_Byte",
+      "desc": "Whether the entity has a glowing outline visible trough blocks."
+    },
+    "Tags": {
+      "type": "TAG_List",
+      "desc": "List of custom string data, modifiable by /scoreboard players tag.",
+      "content": {
+        "type": "TAG_String",
+        "desc": "An individual tag."
+      }
+    },
+    "CommandStats": {
+      "type": "TAG_Compound",
+      "desc": "Information identifying scoreboard parameters to modify relative to the last command run.",
+      "content": {
+        "SuccessCountObjective": {
+          "type": "TAG_String",
+          "desc": "Objective's name about the number of successes of the last command"
+        },
+        "SuccessCountName": {
+          "type": "TAG_String",
+          "desc": "Fake player name about the number of successes of the last command"
+        },
+        "AffectedBlocksObjective": {
+          "type": "TAG_String",
+          "desc": "Objective's name about how many blocks were modified in the last command"
+        },
+        "AffectedBlocksName": {
+          "type": "TAG_String",
+          "desc": "Fake player name about how many blocks were modified in the last command"
+        },
+        "AffectedEntitiesObjective": {
+          "type": "TAG_String",
+          "desc": "Objective's name about how many entities were altered in the last command"
+        },
+        "AffectedEntitiesName": {
+          "type": "TAG_String",
+          "desc": "Fake player name about how many entities were altered in the last command"
+        },
+        "AffectedItemsObjective": {
+          "type": "TAG_String",
+          "desc": "Objective's name about how many items were altered in the last command"
+        },
+        "AffectedItemsName": {
+          "type": "TAG_String",
+          "desc": "Fake player name about how many items were altered in the last command"
+        },
+        "QueryResultObjective": {
+          "type": "TAG_String",
+          "desc": "Objective's name about the query result of the last command"
+        },
+        "QueryResultName": {
+          "type": "TAG_String",
+          "desc": "Fake player name about the query result of the last command"
+        }
+      }
+    }
+  }
+}

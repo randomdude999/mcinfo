@@ -1,0 +1,36 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "content": {
+    "Bred": {
+      "type": "TAG_Byte",
+      "desc": "Unknown. Remains 0 after breeding. If true, causes it to stay near other horses with this flag set."
+    },
+    "EatingHaystack": {
+      "type": "TAG_Byte",
+      "desc": "If the horse is grazing."
+    },
+    "Tame": {
+      "type": "TAG_Byte",
+      "desc": "True if the horse is tamed."
+    },
+    "Temper": {
+      "type": "TAG_Int",
+      "desc": "Ranges from 0 to 100, increases with feeding. Higher values make the horse easier to tame."
+    },
+    "OwnerUUID": {
+      "type": "TAG_String",
+      "desc": "UUID of the player that tamed the horse."
+    },
+    "ArmorItem": {
+      "type": "TAG_Compound",
+      "desc": "Item worn in the armor slot.",
+      "includes": ["item"]
+    },
+    "SaddleItem": {
+      "type": "TAG_Compound",
+      "desc": "Item worn in the saddle slot.",
+      "includes": ["item"]
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Root tag",
+  "content": {
+    "DataVersion": {
+      "type": "TAG_Int",
+      "desc": "Version of the chunk NBT structure."
+    },
+    "Level": {
+      "type": "TAG_Compound",
+      "desc": "Chunk data",
+      "content": {
+        "xPos":{
+          "type": "TAG_Int",
+          "desc": "X position of the chunk"
+        },
+        "zPos":{
+          "type": "TAG_Int",
+          "desc": "Z position of the chunk"
+        },
+        "LastUpdate":{
+          "type": "TAG_Long",
+          "desc": "Tick when the chunk was last saved"
+        },
+        "LightPopulated":{
+          "type": "TAG_Byte",
+          "desc": "If true, the server/client has already calculated lighting values for this chunk after generation"
+        },
+        "TerrainPopulated":{
+          "type": "TAG_Byte",
+          "desc": "Indicates whether the terrain in this chunk was populated with special things"
+        },
+        "V":{
+          "type": "TAG_Byte",
+          "desc": "Always 1, likely a chunk version tag"
+        },
+        "InhabitedTime":{
+          "type": "TAG_Long",
+          "desc": "Number of players have been in this chunk. Increases faster with multiple players. Used for regional difficulty."
+        },
+        "Biomes":{
+          "type": "TAG_Byte_Array",
+          "desc": "256 bytes of biome data, one byte for each vertical column in the chunk. Stores the biome id of the block column."
+        },
+        "HeightMap": {
+          "type": "TAG_Int_Array",
+          "desc": "256 TAG_Int's of heightmap data. Each int records lowest level in each column where skylight is at full strength."
+        },
+        "Sections": {
+          "type": "TAG_List",
+          "desc": "Each tag is a 'sub-chunk' of sorts, a 16x16x16 cube.",
+          "content": {
+            "type": "TAG_Compound",
+            "desc": "An individual section.",
+            "content": {
+              "Y": {
+                "type": "TAG_Byte",
+                "desc": "The Y index (not coordinate) of this section. Goes from 0-15."
+              },
+              "Blocks": {
+                "type": "TAG_Byte_Array",
+                "desc": "4096 bytes of block IDs defining the terrain."
+              },
+              "Add": {
+                "type": "TAG_Byte_Array",
+                "desc": "2048 bytes of additional block ID data. Used to get 4096 block ids. BlockId = Add << 8 + Blocks"
+              },
+              "Data": {
+                "type": "TAG_Byte_Array",
+                "desc": "2048 bytes of block data additionally defining parts of the terrain."
+              },
+              "BlockLight": {
+                "type": "TAG_Byte_Array",
+                "desc": "2048 bytes recording block light hitting each block."
+              },
+              "SkyLight": {
+                "type": "TAG_Byte_Array",
+                "desc": "2048 bytes recording skylight hitting each block."
+              }
+            }
+          }
+        },
+        "Entities": {
+          "type": "TAG_List",
+          "desc": "List of all entities in this chunk",
+          "content": {
+            "type": "TAG_Compound",
+            "desc": "The entity.",
+            "includes": ["entity"]
+          }
+        },
+        "TileEntities":{
+          "type": "TAG_List",
+          "desc": "List of all tile entities in this chunk.",
+          "content": {
+            "type": "TAG_Compound",
+            "desc": "The tile entity.",
+            "includes": ["tileentity"]
+          }
+        },
+        "TileTicks":{
+          "type": "TAG_List",
+          "desc": "Each compound in this list is an 'active' block in the chunk, waiting to be updated.",
+          "content": {
+            "type": "TAG_Compound",
+            "desc": "The tile tick.",
+            "includes": ["tiletick"]
+          }
+        }
+      }
+    }
+  }
+}
