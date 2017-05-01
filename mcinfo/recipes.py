@@ -6,7 +6,7 @@ class SmeltingRecipe:
         self.input = data["input"]
 
     def __str__(self):
-        return "Smelt {}".format(self.input)
+        return "Smelt {0}".format(self.input)
 
 
 class BrewingRecipe:
@@ -116,11 +116,11 @@ class CraftingRecipe:
     def __str__(self):
         if self.is_shaped:
             out = self.pretty_print_crafting()
-            for k, v in self.item_map.items():
+            for k, v in sorted(self.item_map.items()):
                 out += "{0}: {1}\n".format(k, v)
         else:
             out = "Shapeless"
-            for x in self.items:
+            for x in sorted(self.items):
                 out += "\n* " + x
         return out
 

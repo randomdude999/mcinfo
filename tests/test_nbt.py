@@ -26,12 +26,12 @@ testData = {
     }
 }
 
-expectedFormatting = '{ }  example nbt structure\n    [All tags from 3]\n    '\
-                     '[All tags from other]\n    [All tags from things]\n    '\
-                     'a_string: txt  A string! what did you expect, ' \
-                     'the spanish inquisition?\n    a_byte: B  A byte. This ' \
-                     'one has 256 possible values.\n    list: [ ]  example ' \
-                     'list\n        txt  the string.'
+expectedFormatting = '{ }  example nbt structure\n    [All tags from 3]\n  ' \
+                       '  [All tags from other]\n    [All tags from ' \
+                       'things]\n    a_byte: B  A byte. This one has 256 ' \
+                       'possible values.\n    a_string: txt  A string! what ' \
+                       'did you expect, the spanish inquisition?\n    list: ' \
+                       '[ ]  example list\n        txt  the string.'
 
 
 class TestNBT(unittest.TestCase):

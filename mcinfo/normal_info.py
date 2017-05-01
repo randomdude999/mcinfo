@@ -7,7 +7,7 @@ import mcinfo
 
 def format_data(data):
     out = ""
-    for k, v in data.items():
+    for k, v in sorted(data.items()):
         out += textwrap.fill("{0}: {1}".format(k.capitalize(), v), width=80,
                              subsequent_indent="  ") + "\n"
     return out.rstrip()

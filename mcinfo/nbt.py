@@ -30,7 +30,7 @@ def pretty_format_nbt(nbt):
         out = ""
         for x in nbt.includes:
             out += "[All tags from {0}]\n".format(x)
-        for x in nbt.data:
+        for x in sorted(nbt.data):
             out += "{0}: {1}\n".format(x, pretty_format_nbt(nbt.data[x]))
         out = indent + out.rstrip().replace("\n", "\n" + indent)
         return "{0}  {1}\n{2}".format(short_names[nbt.type], nbt.desc, out)
@@ -58,7 +58,7 @@ class NBTTemplate(object):
                     self.includes = []
                 self.data = {}
                 if 'content' in data:
-                    for k in data['content']:
+                    for k in sorted(data['content']):
                         self.data[k] = NBTTemplate(data['content'][k])
             self.type = data['type']
             try:
@@ -72,7 +72,7 @@ class NBTTemplate(object):
         if type(self) == type(other):
             if self.type == other.type and self.desc == other.desc:
                 if self.type == "TAG_Compound":
-                    for k, v in self.data.items():
+                    for k, v in sorted(self.data.items()):
                         if k not in other.data:
                             return False
                         if other.data[k] != v:
