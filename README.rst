@@ -8,6 +8,7 @@ Usage
 -----
 
 ::
+
     $ mcinfo stone
     [TBI]
     $ mcinfo iron_sword
