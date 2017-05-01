@@ -34,9 +34,7 @@ def pretty_format_nbt(nbt):
         out = indent + out.rstrip().replace("\n", "\n" + indent)
         return "{}  {}\n{}".format(short_names[nbt.type], nbt.desc, out)
     elif nbt.type == "TAG_List":
-        out = ""
-        for x in nbt.data:
-            out += "{}\n".format(pretty_format_nbt(x))
+        out = "{}\n".format(pretty_format_nbt(nbt.data))
         out = indent + out.rstrip().replace("\n", "\n" + indent)
         return "{}  {}\n{}".format(short_names[nbt.type], nbt.desc, out)
     else:
@@ -45,20 +43,45 @@ def pretty_format_nbt(nbt):
 
 class NBTTemplate(object):
     def __init__(self, data):
+        if 'type' not in data:
+            raise ValueError("Missing data type")
         if data['type'] in nbt_all_types:
             if data['type'] == "TAG_List":
-                self.data = []
-                for x in data['content']:
-                    self.data.append(NBTTemplate(x))
+                if 'content' not in data:
+                    raise ValueError("Missing content for list")
+                self.data = NBTTemplate(data['content'])
             elif data['type'] == "TAG_Compound":
-                self.includes = data['includes']
+                if 'includes' in data:
+                    self.includes = data['includes']
+                else:
+                    self.includes = []
                 self.data = {}
-                for k in data['content']:
-                    self.data[k] = NBTTemplate(data['content'][k])
+                if 'content' in data:
+                    for k in data['content']:
+                        self.data[k] = NBTTemplate(data['content'][k])
             self.type = data['type']
-            self.desc = data['desc']
+            try:
+                self.desc = data['desc']
+            except KeyError:
+                self.desc = ""
         else:
             raise TypeError("Invalid data type")
+
+    def __eq__(self, other):
+        if type(self) == type(other):
+            if self.type == other.type and self.desc == other.desc:
+                if self.type == "TAG_Compound":
+                    for k, v in self.data.items():
+                        if k not in other.data:
+                            return False
+                        if other.data[k] != v:
+                            return False
+                    return sorted(self.includes) == sorted(other.includes)
+                elif self.type == "TAG_List":
+                    return self.data == other.data
+                else:
+                    return True
+        return False
 
 
 def handle_nbt_request(request):
@@ -67,4 +90,5 @@ def handle_nbt_request(request):
         stream = pkg_resources.resource_stream(__name__, "data/nbt/%s.json" %
                                                request)
         data = json.load(stream)
+        stream.close()
         return pretty_format_nbt(NBTTemplate(data))

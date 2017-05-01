@@ -25,7 +25,7 @@ class TradingRecipe:
             self.secondary_item = data["secondary_item"]
             self.secondary_count = data["secondary_count"]
             self.has_secondary_item = True
-        except AttributeError:
+        except KeyError:
             self.secondary_item = None
             self.secondary_count = 0
             self.has_secondary_item = False
@@ -41,8 +41,8 @@ class TradingRecipe:
         else:
             out += "{}-{} Emeralds".format(self.price_min, self.price_max)
         if self.has_secondary_item:
-            out += " and {} {}.".format(self.secondary_item,
-                                        self.secondary_count)
+            out += " and {} {}.".format(self.secondary_count,
+                                        self.secondary_item)
         else:
             out += "."
         if not self.single_out:
@@ -57,7 +57,7 @@ class ChestLootRecipe:
         self.chance = data["chance"]
 
     def __str__(self):
-        return "Can be found from {} with {.1f}% chance.".format(
+        return "Can be found from {} with {}% chance.".format(
             self.location, self.chance)
 
 
@@ -79,18 +79,20 @@ class MobDropRecipe:
     def __str__(self):
         if self.drop_type == "common":
             if self.drops_single:
-                out = "{} drops 1 on death ".format(self.source)
+                out = "{} drops 1 on death".format(self.source)
             else:
-                out = "{} drops {}-{} on death ".format(
+                out = "{} drops {}-{} on death".format(
                     self.source, self.min_count, self.max_count)
         else:
-            out = "{} has {.1f}% chance to drop on death ".format(
+            out = "{} has {}% chance to drop on death".format(
                 self.source, self.drop_chance)
         if self.extra_conditions:
-            out += self.extra_conditions
+            out += ' ' + self.extra_conditions
+        out += '.'
+        return out
 
 
-class CratingRecipe:
+class CraftingRecipe:
     def __init__(self, data):
         if data["is_shaped"]:
             self.item_map = data["item_map"]
@@ -126,7 +128,7 @@ type_map = {
     "trading": TradingRecipe,
     "chest_loot": ChestLootRecipe,
     "mob_loot": MobDropRecipe,
-    "crafting": CratingRecipe
+    "crafting": CraftingRecipe
 }
 
 
