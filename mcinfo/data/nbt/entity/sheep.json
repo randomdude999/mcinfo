@@ -1,0 +1,15 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob", "base.breedable"],
+  "content": {
+    "Sheared": {
+      "type": "TAG_Byte",
+      "desc": "If the sheep has been sheared."
+    },
+    "Color": {
+      "type": "TAG_Byte",
+      "desc": "Color of the sheep."
+    }
+  }
+}

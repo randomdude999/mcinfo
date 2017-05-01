@@ -1,0 +1,20 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob", "base.breedable", "base.horselike"],
+  "content": {
+    "Variant": {
+      "type": "TAG_Int",
+      "desc": "Variant of the llama."
+    },
+    "Strength": {
+      "type": "TAG_Int",
+      "desc": "How much the llama can carry. The inventory space when chested is 3*strength. Also increases likelihood to scare wolves."
+    },
+    "DecorItem": {
+      "type": "TAG_Compound",
+      "desc": "The item the llama is wearing, without the Slot tag. usually a carpet.",
+      "includes": ["item"]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity"],
+  "content": {
+    "Type": "String The wood type of the boat. oak, spruce, birch, ..."
+  }
+}

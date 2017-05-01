@@ -1,0 +1,15 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob", "base.breedable"],
+  "content": {
+    "RabbitType": {
+      "type": "TAG_Int",
+      "desc": "Determines the skin of the rabbit."
+    },
+    "MoreCarrotTicks": {
+      "type": "TAG_Int",
+      "desc": "Set to 40 when a carrot crop is eaten. decreases by 0-2 every tick until it's 0. Has no effect in-game."
+    }
+  }
+}

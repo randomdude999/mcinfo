@@ -107,7 +107,5 @@ class TestNBT(unittest.TestCase):
         self.assertNotEqual(a, b)
 
     def test_handle_request(self):
-        expected_out = "{ }  Entity data\n    [All tags from entity]\n    [" \
-                       "All tags from mob]\n    [All tags from breedable]"
-        out = nbt.handle_nbt_request("cow")
-        self.assertEqual(out, expected_out)
+        out = nbt.handle_nbt_request("test")
+        self.assertEqual(out, expectedFormatting)

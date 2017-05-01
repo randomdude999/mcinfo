@@ -1,0 +1,8 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob"],
+  "content": {
+    "PlayerCreated": "Byte If this golem was created by a player."
+  }
+}

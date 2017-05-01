@@ -1,0 +1,15 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob"],
+  "content": {
+    "carried": {
+      "type": "TAG_Short",
+      "desc": "ID of the block carried. 0 when not carrying anything."
+    },
+    "carriedData": {
+      "type": "TAG_Short",
+      "desc": "Additional data of the block carried."
+    }
+  }
+}

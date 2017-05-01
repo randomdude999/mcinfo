@@ -1,0 +1,14 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.projectile"],
+  "content": {
+    "shake": "Byte The shake when arrows hit a block.",
+    "ownerName": "String The name of the player this projectile was thrown by.",
+    "Potion": {
+      "type": "TAG_Compound",
+      "desc": "The item that was thrown.",
+      "includes": ["base.potion_item"]
+    }
+  }
+}

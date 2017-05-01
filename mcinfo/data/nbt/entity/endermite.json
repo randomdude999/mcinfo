@@ -1,0 +1,15 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob"],
+  "content": {
+    "Lifetime": {
+      "type": "TAG_Int",
+      "desc": "How long the endermite has existed for. The endermite despawns when this reaches about 2400."
+    },
+    "PlayerSpawned": {
+      "type": "TAG_Byte",
+      "desc": "Endermen will attack the endermite if this is 1."
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity"],
+  "content": {
+    "Age": "Int Age of the field",
+    "Color": "Int Color of the displayed particle.",
+    "Duration": "Int Maximum age of the field. Field dissipated at this age, regardless of radius.",
+    "ReapplicationDelay": "Int Number of ticks before reapplying the effect.",
+    "WaitTime": "Int Time before deploying the field. Doesn't apply the effect until age is >= this.",
+    "OwnerUUIDMost": "Long UUIDMost of the owner.",
+    "OwnerUUIDLeast": "Long UUIDLeast of the owner.",
+    "DurationOnUse": "Float Unknown. Does not effect age or duration.",
+    "Radius": "Float The area's radius.",
+    "RadiusOnUse": "Float Amount the radius grown upon applying the effect. Usually negative.",
+    "RadiusPerTick": "Float Amount the radius grows per tick. Usually negative.",
+    "Particle": "String The particle displayed by the area effect.",
+    "ParticleParam1": "Int For blockdust, blockcrack and fallingdust particles, specifies a numeric block id and a data value, using a single number: id+(data*4096). For iconcrack, specifies a block or item id.",
+    "ParticleParam2": "Int For iconcrack, specifies a data value.",
+    "Potion": "The name of the default potion effect.",
+    "Effects": {
+      "type": "TAG_List",
+      "desc": "A list of the applied effects.",
+      "content": {
+        "type": "TAG_Compound",
+        "desc": "An individual effect.",
+        "content": {
+          "Ambient": "Byte Reduced particle display",
+          "Amplifier": "Potion level",
+          "Id": "Potion id",
+          "ShowParticles": "particle display",
+          "Duration": "effect duration, 0 if instant."
+        }
+      }
+    }
+  }
+}

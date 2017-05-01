@@ -1,0 +1,10 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Tags common to all minecarts",
+  "content": {
+    "CustomDisplayTile": "Byte Whether to display the custom tile in this minecart",
+    "DisplayTile": "String The ID of the custom block in the minecart",
+    "DisplayData": "Int Data value of the custom block in the minecart",
+    "DisplayOffset": "Int The offset of the block displayed in the minecart in pixels. Positive values move up, negative values move down."
+  }
+}

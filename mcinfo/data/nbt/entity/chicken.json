@@ -1,0 +1,15 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob", "base.breedable"],
+  "content": {
+    "IsChickenJockey": {
+      "type": "TAG_Byte",
+      "desc": "Whether this chicken is part of a chicken jockey."
+    },
+    "EggLayTime": {
+      "type": "TAG_Int",
+      "desc": "Number of ticks until the chicken lays an egg."
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity"],
+  "content": {
+    "direction": {
+      "type": "TAG_List",
+      "desc": "Should be identical to Motion.",
+      "content": "Double The X, Y or Z motion."
+    },
+    "life": "Int Increments each tick when the projectile is not moving, resets to 0 if it moves. Not used but still saved/read",
+    "power": {
+      "type": "TAG_List",
+      "desc": "Like direction but without resistance",
+      "content": "Double The X, Y or Z motion without resistance"
+    }
+  }
+}

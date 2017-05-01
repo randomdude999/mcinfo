@@ -15,6 +15,7 @@ def format_data(data):
 
 def handle_request(request):
     out = ""
+    request = request.replace(".", "/")
     if pkg_resources.resource_exists(__name__, "data/%s.json" %
                                      request):
         data_str = pkg_resources.resource_string(__name__, "data/%s.json" %

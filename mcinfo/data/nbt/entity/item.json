@@ -1,0 +1,17 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity"],
+  "content": {
+    "Age": "Short Number of ticks the item has been 'untouched'. After 6000 ticks (5 minutes) the item is destroyed.",
+    "Health": "Short The health of the item, starts at 5. Items take damage from fire, lava, falling anvils and explosions. The item is destroyed when its health reaches 0.",
+    "PickupDelay": "Short Number of ticks the item cannot be picked up for.",
+    "Owner": "String If not empty, only this player can pick up the item. Used by /give command.",
+    "Thrower": "String Name of the player who threw the item. Used for the 'Diamonds to You' achievement.",
+    "Item": {
+      "type": "TAG_Compound",
+      "desc": "The inventory item, without the Slot tag.",
+      "includes": ["base.item"]
+    }
+  }
+}

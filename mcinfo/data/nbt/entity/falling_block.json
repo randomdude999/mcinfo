@@ -1,0 +1,15 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity"],
+  "content": {
+    "Block": "String The Block ID of the falling block.",
+    "TileEntityData": "Compound The tags of the tile entity of this falling block.",
+    "Data": "Byte The data value for the block.",
+    "Time": "Int The number of ticks the entity has existed. If this goes above 600, the entity is deleted.",
+    "DropItem": "Byte Whether the block should drop has an item when it breaks.",
+    "HurtEntites": "Byte Whether the block should hurt entities it falls on.",
+    "FallHurtMax": "Int Maximum number of hitpoints of damage to inflict on entities that intersect this falling_block. In vanilla always 40",
+    "FallHurtAmount": "Float Multiplied by FallDistance to calculate amount if damage to inflict. For vanilla always 2."
+  }
+}

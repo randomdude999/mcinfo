@@ -1,0 +1,20 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob", "base.breedable", "base.horselike"],
+  "content": {
+    "ChestedHorse": {
+      "type": "TAG_Byte",
+      "desc": "Whether the horse has chests."
+    },
+    "Items": {
+      "type": "TAG_List",
+      "desc": "List of items. Only exists when ChestedHorse is true.",
+      "content": {
+        "type": "TAG_Compound",
+        "desc": "An item, including the Slot tag. Slots go from 2 to 16.",
+        "includes": ["item"]
+      }
+    }
+  }
+}

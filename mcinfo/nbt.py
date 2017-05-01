@@ -92,6 +92,7 @@ class NBTTemplate(object):
 
 
 def handle_nbt_request(request):
+    request = request.replace('.', '/')
     if pkg_resources.resource_exists(__name__, "data/nbt/%s.json" %
                                      request):
         data_str = pkg_resources.resource_string(__name__, "data/nbt/%s.json" %

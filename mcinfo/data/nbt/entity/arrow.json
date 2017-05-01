@@ -1,0 +1,32 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.projectile"],
+  "content": {
+    "shake": "Byte The 'shake' when arrows hit a block.",
+    "inData": "Byte Metadata of the tile the arrow is in.",
+    "pickup": "Byte 0: can't be picked up by players, 1: can be picked up in survival and creative, 2: can only be picked up by players in creative",
+    "player": "Byte If pickup is not used, and this is true, the arrow can be picked up by players.",
+    "life": "Short Increments each tick when the arrow isn't moving, when it reaches 1200 the arrow despawns.",
+    "damage": "Double Damage dealt by the arrow.",
+    "inGround": "Byte If the projectile is in the ground.",
+    "crit": "Byte Whether the arrow will deal critical damage.",
+    "Color": "Int The color of this tipped arrow, if its item form had a custom color.",
+    "CustomPotionEffects": {
+      "type": "TAG_List",
+      "desc": "List of potion effects this tipped arrow has.",
+      "content": {
+        "type": "TAG_Compound",
+        "desc": "A single effect.",
+        "content": {
+          "Id": "Byte The numberic ID of the potion effect.",
+          "Amplifier": "Byte The amplifierof the effect. 0 is level 1",
+          "Duration": "Int The duration of the effect in ticks.",
+          "Ambient": "Byte Whether to show less intrusive particles.",
+          "ShowParticles": "Byte Whether to show particles for this effect."
+        }
+      }
+    },
+    "Potion": "String The name of the potion this tipped arrow has. This is different from the status effect name"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob", "base.breedable", "base.tamable"],
+  "content": {
+    "CatType": {
+      "type": "TAG_Int",
+      "desc": "Id of the cat's skin."
+    }
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "type": "TAG_Compound",
-  "desc": "Entity data",
-  "includes": ["entity", "mob"],
-  "content": {
-    "Johnny": "Byte Setting this to true will enable Johnny behaviour."
-  }
-}

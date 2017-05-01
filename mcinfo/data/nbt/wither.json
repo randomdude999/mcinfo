@@ -1,8 +1,0 @@
-{
-  "type": "TAG_Compound",
-  "desc": "Entity data",
-  "includes": ["entity", "mob"],
-  "content": {
-    "Invul": "Int Number of ticks of invulnerability left after being created."
-  }
-}

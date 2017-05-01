@@ -1,0 +1,18 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.minecart"],
+  "content": {
+    "Items": {
+      "type": "TAG_List",
+      "desc": "List of items",
+      "content": {
+        "type": "TAG_Compound",
+        "desc": "An item, including the Slot tag.",
+        "includes": ["base:item"]
+      }
+    },
+    "LootTable": "String Loot table used to fill the chest when it is next opened.",
+    "LootTableSeed": "Long Seed for generating the loot table."
+  }
+}

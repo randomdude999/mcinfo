@@ -1,0 +1,11 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob"],
+  "content": {
+    "ExplosionPower": {
+      "type": "TAG_Int",
+      "desc": "Radius of the exposion created by this ghast's fireballs."
+    }
+  }
+}

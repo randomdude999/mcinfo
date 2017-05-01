@@ -1,0 +1,19 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob"],
+  "content": {
+    "Peek": {
+      "type": "TAG_Byte",
+      "desc": "Height of the shulker's head."
+    },
+    "AttachFace": {
+      "type": "TAG_Byte",
+      "desc": "Direction of the block the shulker is attached to."
+    },
+    "Color": "Byte Color of the shulker. Naturally 10 (purple), default is 0 (white)",
+    "APX": "Int Approximate X coordinate.",
+    "APY": "Int Approximate Y coordinate.",
+    "APZ": "Int Approximate Z coordinate."
+  }
+}

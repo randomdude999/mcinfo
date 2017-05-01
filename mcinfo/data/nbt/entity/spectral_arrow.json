@@ -1,0 +1,16 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.projectile"],
+  "content": {
+    "shake": "Byte The 'shake' when arrows hit a block.",
+    "inData": "Byte Metadata of the tile the arrow is in.",
+    "pickup": "Byte 0: can't be picked up by players, 1: can be picked up in survival and creative, 2: can only be picked up by players in creative",
+    "player": "Byte If pickup is not used, and this is true, the arrow can be picked up by players.",
+    "life": "Short Increments each tick when the arrow isn't moving, when it reaches 1200 the arrow despawns.",
+    "damage": "Double Damage dealt by the arrow.",
+    "inGround": "Byte If the projectile is in the ground.",
+    "crit": "Byte Whether the arrow will deal critical damage.",
+    "Duration": "Int Number of ticks the Glowing effect will last."
+  }
+}

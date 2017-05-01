@@ -1,0 +1,10 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity"],
+  "content": {
+    "Age": "Short Number of ticks the XP orb has been 'untouched'. After 6000 ticks (5 minutes) the XP orb is destroyed.",
+    "Health": "Byte The health of the XP orb. XP orbs take damage from fire, lava, falling anvils and explosions. The XP orb is destroyed when its health reaches 0.",
+    "Value": "Short Amount of XP this XP orb will give when picked up."
+  }
+}

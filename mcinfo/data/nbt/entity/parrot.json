@@ -1,0 +1,11 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["base.entity", "base.mob", "base.tamable"],
+  "content": {
+    "Variant": {
+      "type": "TAG_Int",
+      "desc": "Which color the parrot is."
+    }
+  }
+}
