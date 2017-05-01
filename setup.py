@@ -42,5 +42,5 @@ setup(
             'data/*.json'
         ]
     },
-    test_suite='tests'
+    test_suite='nose2.collector.collector'
 )
