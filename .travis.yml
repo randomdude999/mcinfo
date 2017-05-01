@@ -10,7 +10,7 @@ install:
   - pip install nose2 coverage cov-core coveralls
 script:
   - nose2
-after-success:
+after_success:
   - coveralls
 cache: pip
 notifications:
