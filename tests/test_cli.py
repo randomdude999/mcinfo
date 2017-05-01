@@ -1,4 +1,4 @@
-import sys, io
+import sys
 from contextlib import contextmanager
 import unittest
 
