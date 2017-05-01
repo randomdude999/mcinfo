@@ -19,6 +19,7 @@ def handle_request(request):
         stream = pkg_resources.resource_stream(__name__, "data/%s.json" %
                                                request)
         data = json.load(stream)
+        stream.close()
         out = format_data(data)
 
     if pkg_resources.resource_exists(__name__, "data/recipes/%s.json" %
@@ -26,6 +27,7 @@ def handle_request(request):
         stream = pkg_resources.resource_stream(__name__, "data/recipes/%s.json"
                                                % request)
         data = json.load(stream)
+        stream.close()
         out += "\nRecipes:\n"
         out += str(mcinfo.recipes.RecipeCollection(data)).rstrip()
     return out
