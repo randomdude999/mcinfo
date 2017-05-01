@@ -1,0 +1,9 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["entity", "mob", "breedable", "tamable"],
+  "content": {
+    "Angry": "Byte True if the wolf is angry.",
+    "CollarColor": "Color of the wolf's collar. Present even for untamed wolves. Default is 14 (red)."
+  }
+}

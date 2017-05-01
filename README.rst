@@ -2,10 +2,10 @@
 mcinfo
 ======
 
-.. image:: https://coveralls.io/repos/github/randomdude999/mcinfo/badge.svg?branch=master
-    :target: https://coveralls.io/github/randomdude999/mcinfo?branch=master
 .. image:: https://travis-ci.org/randomdude999/mcinfo.svg?branch=master
     :target: https://travis-ci.org/randomdude999/mcinfo
+.. image:: https://coveralls.io/repos/github/randomdude999/mcinfo/badge.svg?branch=master
+    :target: https://coveralls.io/github/randomdude999/mcinfo?branch=master
 
 A command-line tool to show information about Minecraft blocks, items and more.
 
@@ -15,6 +15,8 @@ Installing
 
     pip install mcinfo
 
+(Doesn't work right now, I'll put it on PyPI once I have all the data done.
+For now use the dev setup but don't create a virtualenv)
 Usage
 -----
 ::

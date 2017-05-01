@@ -1,0 +1,55 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["entity", "mob", "breedable"],
+  "content": {
+    "Profession": "Int Id of the texture used for this villager. Also influences trading options.",
+    "Riches": "Int Unused. Increases by number of emeralds traded.",
+    "Career": "Int ID of this villager's career. Also influences trading options.",
+    "CareerLevel": "Int Current level of this villager's trading options.",
+    "Willing": "Byte if the villager is willing to mate.",
+    "Inventory": {
+      "type": "TAG_List",
+      "desc": "List of items in this villager's inventory, has 8 slots.",
+      "content": {
+        "type": "TAG_Compound",
+        "desc": "An item in the inventory, excluding the Slot tag.",
+        "includes": ["item"]
+      }
+    },
+    "Offers": {
+      "type": "TAG_Compound",
+      "desc": "Is generated when the trading menu is opened for the first time.",
+      "content": {
+        "Recipes": {
+          "type": "TAG_List",
+          "desc": "List of trade options.",
+          "content": {
+            "type": "TAG_Compound",
+            "desc": "A trade option.",
+            "content": {
+              "rewardExp": "Byte whether the trade will provide XP.",
+              "maxUses": "Int Maximum number of times this trade can be used before it locks out.",
+              "uses": "Int Number of times this trade has been used.",
+              "buy": {
+                "type": "TAG_Compound",
+                "desc": "First 'cost' item, without the Slot tag.",
+                "includes": ["item"]
+              },
+              "buyB": {
+                "type": "TAG_Compound",
+                "desc": "(optional) second cost item, without the Slot tag.",
+                "includes": ["item"]
+              },
+              "sell": {
+                "type": "TAG_Compound",
+                "desc": "Item being sold, without the Slot tag.",
+                "includes": ["item"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

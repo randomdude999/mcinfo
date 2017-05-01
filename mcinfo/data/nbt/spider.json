@@ -1,5 +1,5 @@
 {
   "type": "TAG_Compound",
   "desc": "Entity data",
-  "includes": ["entity", "mob", "breedable"]
+  "includes": ["entity", "mob"]
 }

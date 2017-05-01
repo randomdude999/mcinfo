@@ -1,0 +1,15 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["entity", "mob"],
+  "content": {
+    "Size": {
+      "type": "TAG_Int",
+      "desc": "Size of the slime."
+    },
+    "wasOnGround": {
+      "type": "TAG_Byte",
+      "desc": "If the slime is touching the ground."
+    }
+  }
+}

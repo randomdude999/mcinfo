@@ -1,0 +1,9 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Entity data",
+  "includes": ["entity", "mob", "breedable", "horselike"],
+  "content": {
+    "SkeletonTrap": "Byte If the horse is a trapped skeleton horse.",
+    "SkeletonTrapTime": "Int Incremented each tick if SkeletonTrap is 1. The horse automatically despawns when this is 18000 (15 minutes)"
+  }
+}

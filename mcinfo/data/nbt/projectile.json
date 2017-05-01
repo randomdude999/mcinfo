@@ -1,0 +1,10 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Tags common to all projectiles",
+  "content": {
+    "xTile": "Int X coordinate of the entity's block position.",
+    "yTile": "Int Y coordinate of the entity's block position.",
+    "zTile": "Int Z coordinate of the entity's block position.",
+    "inTile": "String ID of the tile the projectile is in."
+  }
+}

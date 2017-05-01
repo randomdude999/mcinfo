@@ -1,0 +1,14 @@
+{
+  "type": "TAG_Compound",
+  "desc": "Tags common to all mobs that can be tamed",
+  "content": {
+    "OwnerUUID": {
+      "type": "TAG_String",
+      "desc": "UUID of the player that owns the mob."
+    },
+    "Sitting": {
+      "type": "TAG_Byte",
+      "desc": "Whether the mob is sitting."
+    }
+  }
+}
