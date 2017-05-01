@@ -2,6 +2,11 @@
 mcinfo
 ======
 
+.. image:: https://coveralls.io/repos/github/randomdude999/mcinfo/badge.svg?branch=master
+    :target: https://coveralls.io/github/randomdude999/mcinfo?branch=master
+.. image:: https://travis-ci.org/randomdude999/mcinfo.svg?branch=master
+    :target: https://travis-ci.org/randomdude999/mcinfo
+
 A command-line tool to show information about Minecraft blocks, items and more.
 
 Installing
