@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 
 class SmeltingRecipe:
     def __init__(self, data):
