@@ -44,6 +44,12 @@ def pretty_format_nbt(nbt):
 
 class NBTTemplate(object):
     def __init__(self, data):
+        if isinstance(data, str):
+            new_data = {
+                'type': "TAG_" + data.split(" ")[0],
+                'desc': " ".join(data.split(" ")[1:])
+            }
+            data = new_data
         if 'type' not in data:
             raise ValueError("Missing data type")
         if data['type'] in nbt_all_types:

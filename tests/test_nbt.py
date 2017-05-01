@@ -36,6 +36,11 @@ expectedFormatting = '{ }  example nbt structure\n    [All tags from 3]\n  ' \
 
 class TestNBT(unittest.TestCase):
 
+    def test_init_with_string(self):
+        a = nbt.NBTTemplate("Int test")
+        b = nbt.NBTTemplate({'type': "TAG_Int", 'desc': "test"})
+        self.assertEqual(a, b)
+
     def test_formatting(self):
         nbt_a = nbt.NBTTemplate(testData)
         self.assertEqual(nbt.pretty_format_nbt(nbt_a), expectedFormatting)
