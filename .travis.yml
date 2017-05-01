@@ -7,7 +7,7 @@ python:
   - "3.5"
   - "3.6"
 install:
-  - pip install nose2 coverage cov-core coveralls
+  - pip install --user nose2 coverage cov-core coveralls
 script:
   - nose2
 after-success:
