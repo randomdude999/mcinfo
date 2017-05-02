@@ -17,7 +17,7 @@
     "Particle": "String The particle displayed by the area effect.",
     "ParticleParam1": "Int For blockdust, blockcrack and fallingdust particles, specifies a numeric block id and a data value, using a single number: id+(data*4096). For iconcrack, specifies a block or item id.",
     "ParticleParam2": "Int For iconcrack, specifies a data value.",
-    "Potion": "The name of the default potion effect.",
+    "Potion": "String The name of the default potion effect.",
     "Effects": {
       "type": "TAG_List",
       "desc": "A list of the applied effects.",
@@ -26,10 +26,10 @@
         "desc": "An individual effect.",
         "content": {
           "Ambient": "Byte Reduced particle display",
-          "Amplifier": "Potion level",
-          "Id": "Potion id",
-          "ShowParticles": "particle display",
-          "Duration": "effect duration, 0 if instant."
+          "Amplifier": "Byte Potion level",
+          "Id": "Byte Potion id",
+          "ShowParticles": "Byte particle display",
+          "Duration": "Int effect duration, 0 if instant."
         }
       }
     }

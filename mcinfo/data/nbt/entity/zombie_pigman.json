@@ -6,6 +6,6 @@
     "IsBaby": "Byte true if the zombie is a baby.",
     "CanBreakDoors": "Byte true if the zombie can break doors.",
     "Anger": "Byte ticks until the zombie pigman becomes neutral.",
-    "HurtBy": "UUID of the last player that attacked the zombie pigman."
+    "HurtBy": "String UUID of the last player that attacked the zombie pigman."
   }
 }
