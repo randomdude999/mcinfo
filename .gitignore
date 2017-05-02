@@ -27,8 +27,8 @@ var/
 docs/_build/
 
 # virtualenv
-venv/
-ENV/
+venv*/
+
 
 htmlcov/
 .coverage
