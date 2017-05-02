@@ -44,6 +44,8 @@ def pretty_format_nbt(nbt):
 
 class NBTTemplate(object):
     def __init__(self, data):
+        if isinstance(data, bytes):
+            print("This is horribly bad... HOW EVEN!?")
         if isinstance(data, str):
             new_data = {
                 'type': "TAG_" + data.split(" ")[0],
