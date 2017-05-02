@@ -3,6 +3,12 @@ import pkg_resources
 import json
 import textwrap
 
+try:
+    # noinspection PyUnresolvedReferences,PyShadowingBuiltins
+    str = unicode
+except NameError:
+    pass
+
 nbt_all_types = ['TAG_Byte', 'TAG_Short', 'TAG_Int', 'TAG_Long', 'TAG_Float',
                  'TAG_Double', 'TAG_String', 'TAG_Byte_Array', 'TAG_List',
                  'TAG_Int_Array', 'TAG_Compound']
